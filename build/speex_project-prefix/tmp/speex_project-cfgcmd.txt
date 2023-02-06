@@ -1,0 +1,1 @@
+cmd='/home/vitalii/Speex_project/Speex_project/speex/configure;--prefix=/home/vitalii/Speex_project/Speex_project/build_prj;--enable-static'

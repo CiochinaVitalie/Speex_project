@@ -1,0 +1,4 @@
+gain_table_lbr.lo: \
+ /home/vitalii/Speex_project/Speex_project/speex/libspeex/gain_table_lbr.c \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

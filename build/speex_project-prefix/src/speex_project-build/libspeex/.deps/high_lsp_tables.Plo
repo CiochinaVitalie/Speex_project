@@ -1,0 +1,4 @@
+high_lsp_tables.lo: \
+ /home/vitalii/Speex_project/Speex_project/speex/libspeex/high_lsp_tables.c \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

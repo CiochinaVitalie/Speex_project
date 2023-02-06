@@ -1,0 +1,1 @@
+/usr/bin/gcc -g CMakeFiles/target.dir/main.c.o -o target  -Wl,-rpath,/home/vitalii/Speex_project/Speex_project/speex_prj/lib ../speex_prj/lib/libspeex.so 

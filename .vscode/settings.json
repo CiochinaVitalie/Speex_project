@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "arch.h": "c",
+        "quant_lsp_bfin.h": "c",
+        "speex_config_types.h": "c",
+        "speex.h": "c"
+    }
+}

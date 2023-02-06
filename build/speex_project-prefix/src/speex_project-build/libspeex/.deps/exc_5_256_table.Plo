@@ -1,0 +1,4 @@
+exc_5_256_table.lo: \
+ /home/vitalii/Speex_project/Speex_project/speex/libspeex/exc_5_256_table.c \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

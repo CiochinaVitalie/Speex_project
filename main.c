@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <speex.h>
+#include "lowcfe.h"
 
 #define FRAME_SIZE 160
 #define PACKAGE_SIZE 20
@@ -92,6 +93,9 @@ void data_decode(long percent)
     int16_t out[FRAME_SIZE];
     char buf[PACKAGE_SIZE];
     uint32_t lost_prsent = percent;
+
+    static LowcFE_c lc = {0};                  /* PLC simulation data */
+    g711plc_construct(&lc);
     // Create a new decoder state in narrowband mode
     void *decoder_state = speex_decoder_init(&speex_nb_mode);
 
@@ -143,6 +147,8 @@ void data_decode(long percent)
         if (inc == push_lost)
         {
             inc = 0;
+            g711plc_dofe(&lc, out);
+            fwrite(out, 2, FRAME_SIZE, fout);
         }
 
         else
@@ -151,6 +157,7 @@ void data_decode(long percent)
             speex_bits_read_from(&bits, buf, pkg_size);
             // Decode the data
             speex_decode_int(decoder_state, &bits, out);
+            g711plc_addtohistory(&lc, (short *) out);
             // write to file
             fwrite(out, 2, FRAME_SIZE, fout);
         }
@@ -172,6 +179,7 @@ void data_decode(long percent)
 int main(int argc, char **argv)
 {
     long arg = strtol(argv[1], NULL, 10);
+    // printf("")
     printf("Input lost packets are %ld persents\n", arg);
     data_encode();
     data_decode(arg);
